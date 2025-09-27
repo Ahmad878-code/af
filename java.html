@@ -1,0 +1,29 @@
+<html>
+    <body>
+        <style>
+            body {
+                background:linear-gradient(to right, lightgreen 0%, lightblue 100%);
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+            h2 {
+                color:darkblue;
+                text-align:center;
+                font-family:Arial, Helvetica, sans-serif;
+                
+            }
+        </style>
+        <h2>JavaScript Functions</h2>
+<p>Do a calculation and then display the result.</p>
+<p id="demo"></p>
+<script>
+function add(a, b) {
+  return a + b;
+}
+function average(a, b) {
+  return add(a, b) / 2;
+}
+let result = average(10, 20);
+document.getElementById("demo").innerHTML = result;
+</script>
+    </body>
+</html>
