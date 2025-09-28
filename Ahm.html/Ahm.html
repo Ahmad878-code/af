@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        body {
+            background: lightgreen;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1 {
+            color: beige;
+            text-align: center;
+            border-color: black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        form {
+            display: inline-block;
+            text-align: center;
+            margin-top: 20px;
+            background:linear-gradient(to right, grey 0%, #ffe6e6 70%);
+            border-radius:10px;
+        }
+        fieldset {
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+    <h1>REAL TIME VALIDATION USING JS</h1>
+    <hr>
+    <form id="loginForm" onsubmit="validate(event)">
+        <!-- Fieldset groups related elements in a form -->
+        <fieldset>
+            <!-- Email input field -->
+            <div>
+                            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+        </div><br>
+
+        <!-- Password input field with a minimum length requirement -->
+        <div>
+            <label for="password">Password:</label>
+            <!-- minlength attribute ensures the password is at least 8 characters long -->
+                         <input type="password" id="password" name="password" minlength="8">
+        </div><br>
+
+        <!-- Age input field with minimum and maximum value requirements -->
+        <div>
+            <label for="age">Age:</label>
+            <!-- min and max attributes define the acceptable range of ages -->
+            <input type="number" id="age" name="age" min="12" max="50">
+        </div><br>        <!--submit button to submit the form -->
+                    <button type="submit">Login</button>
+                </fieldset>
+    </form>
+    <!--div for displaying validation message-->
+    <div id="message"></div>
+    <!--link for the external js file-->
+    <script src="script.js"></script>
+</body>
+</html>
+
