@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ode to Array Sorting</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, lightblue, lightgreen);
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      color: #4a4a4a;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0 0 15px;
+    }
+
+    textarea, button, select {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>🔢 <b>Ode to Array Sorting</b></h1>
+    <p><b>Enter numbers separated by commas:</b></p>
+    
+    <textarea id="arrayInput" placeholder="e.g. 5, 2, 9, 1, 7"></textarea>
+    
+    <label for="order"><b>Sort Order:</b></label>
+    <select id="order">
+      <option value="asc"><b>Ascending</b></option>
+      <option value="desc"><b>Descending</b></option>
+    </select>
+    
+    <button onclick="sortArray()">Sort Array</button>
+    
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function sortArray() {
+      const input = document.getElementById("arrayInput").value;
+      const order = document.getElementById("order").value;
+      const resultDiv = document.getElementById("result");
+
+      let arr = input
+        .split(",")
+        .map(num => num.trim())
+        .filter(num => num !== "")
+        .map(num => parseFloat(num));
+
+      if (arr.some(isNaN)) {
+        resultDiv.textContent = "❌ Please enter valid numbers separated by commas.";
+        return;
+      }
+
+      const original = [...arr];
+
+      if (order === "asc") {
+        arr.sort((a, b) => a - b);
+      } else {
+        arr.sort((a, b) => b - a);
+      }
+
+      resultDiv.innerHTML = `
+        ✅ Original Array: ${original.join(", ")}<br>
+        🔁 Sorted Array (${order === "asc" ? "Ascending" : "Descending"}): ${arr.join(", ")}
+      `;
+    }
+  </script>
+
+</body>
+</html>
