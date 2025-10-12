@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<b><body>
+        <style>
+            body {
+                background:linear-gradient(to right, lightblue, lightgreen);
+                text-align: center;
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+            h2 {
+                color: beige;
+                text-shadow: 2px 2px 4px black;
+                margin-bottom: 20px;
+            }
+        </style>
+                <h2>The JavaScript String() Method</h2>
+          <p>The String() method can convert a number to a string.</p>
+          <p id="number_result"></p>
+          <p id="string_result"></p>
+     <script>
+        var x = 70;
+        var y = 90;
+           document.getElementById("number_result").innerHTML = x + y;
+           document.getElementById("string_result").innerHTML = String(x) + String(y); // Does not add because it is a string it concatenates
+     </script>
+   </body></b>
+  </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background:linear-gradient(to right, lightgreen,lightblue);
+      color: #333;
+      padding: 20px;
+    }
+
+    h2 {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        box-shadow:1px 1px 2px black;
+    }
+    p {
+      font-size: 16px;
+    }
+    #error_message {
+      color: red;
+      font-weight: bold;
+      margin-top: 9px;
+    }
+    .highlight {
+      background:linear-gradient(to left, lightgreen, lightblue );
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="highlight">
+    <h2>JavaScript Error Handling</h2>
+    <p>This example demonstrates how to use <b>catch</b> to display an error.</p>
+    <p id="error_message"></p>
+    <script>
+      try {
+        addalert("Welcome guest!");
+      }
+      catch(err) {
+        document.getElementById("error_message").innerHTML = err.message;
+      }
+    </script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background:linear-gradient(to right, lightblue, lightgreen);
+      padding: 20px;
+    }
+
+    h1 {
+      color: beige;
+      text-shadow: 2px 2px 4px black;
+    }
+
+    p {
+      font-size: 16px;
+      color: #333;
+    }
+
+    #result {
+      font-weight: bold;
+      font-size: 20px;
+      color: red;
+      margin-top: 10px;
+    }
+       .container {
+      background:linear-gradient(to left, lightblue, lightgreen);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin: auto;
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript Arrow Function</h1>
+    <p><b>This example shows an Arrow Function with a parameter.</b></p>
+    <p id="result"></p>
+  </div>
+  <script>
+    const add = (a, b) => a + b;
+    document.getElementById("result").innerHTML = add(4, 6);
+  </script>
+</body>
+</html>
