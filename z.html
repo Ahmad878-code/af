@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Callbacks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+       background:linear-gradient(to right, lightblue, lightgreen);
+      color: #333;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #2c3e50;
+    }
+
+    #result {
+      margin-top: 10px;
+      padding: 10px;
+      background:linear-gradient(to right, lightblue, lightgreen);
+      border: 1px solid #00acc1;
+      border-radius: 5px;
+      width: fit-content;
+    }
+
+    code {
+       background:linear-gradient(to right, lightblue, lightgreen);
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>JavaScript Callbacks</h2>
+  <p>Do a calculation and then display the result.</p>
+  <p id="result"></p>
+
+  <script>
+    function myDisplayer(value) {
+      document.getElementById("result").innerHTML = value;
+    }
+
+    function myCalculator(num1, num2, myCallback) {
+      let sum = num1 + num2;
+      myCallback(sum);
+    }
+
+    myCalculator(5, 5, myDisplayer);
+  </script>
+
+</body>
+</html>
