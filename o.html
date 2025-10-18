@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2><b>JavaScript Promise</b></h2>
+<p id="demo"></p>
+  <style>
+    body {
+      background: linear-gradient(to right, lightblue, lightgreen);
+      color: black;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    h2 {
+      color: darkblue;
+      font-size: 28px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px darkgreen;
+    }
+         </style>
+<script>
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+function sum(a, b) {
+  var sum = a + b;
+  myDisplayer(sum);
+}
+
+let myPromise = new Promise(function(myResolve, myReject) {
+  // producing code may take some time
+  let x = 0; // some code (try to change x to 5)
+
+  if (x == 0) {
+    myResolve("OK"); // when successful
+  } else {
+    myReject("Error"); // when error
+  }
+});
+
+// consuming code - must wait for fulfilled promise
+myPromise.then(
+  function(value) { sum(5, 5); }, // code is successful
+  function(error) { sum(error); } // code is error
+);
+</script>
+
+</body>
+</html>
