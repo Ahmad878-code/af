@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background: linear-gradient(to right, lightblue, lightgreen);
+      color: black;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    h2 {
+      color: darkblue;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 48px;
+      color: darkgreen;
+      margin-top: 20px;
+      text-shadow: 2px 2px 8px lightgreen;
+    }
+    .container {
+      background:linear-gradient(to right, lightgreen, lightblue);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px lightgray;
+      width: 400px;
+      margin: auto;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>JavaScript async / await</h2>
+    <h1 id="result"></h1>
+  </div>
+  <script>
+    async function add(a, b) {
+      let response = await a + b;
+      display(response);
+    }
+    function display(some) {
+      document.getElementById("result").innerHTML = some;
+    }
+    add(993, 20);
+  </script>
+</body>
+</html>
