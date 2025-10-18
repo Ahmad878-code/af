@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error Handling Example</title>
+  <style>
+    /* ===== Basic Page Styling ===== */
+    body {
+      font-family: Arial, sans-serif;
+      background:linear-gradient(to right, lightblue, lightgreen);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    /* Message styling for success or error */
+    #message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .error {
+      color: red;
+    }
+
+    .success {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Page Title ===== -->
+  <h2>JavaScript Error Handling Example</h2>
+  <h3>If you don't type a number the program will show an error</h3>
+
+  <!-- ===== Input Field and Button ===== -->
+  <input type="text" id="numInput" placeholder="Enter a number">
+  <button onclick="checkNumber()">Check</button>
+
+  <!-- ===== Message Output Area ===== -->
+  <p id="message"></p>
+
+  <script>
+    // ===== Function to Check the Input Value =====
+    function checkNumber() {
+      // Get the message paragraph element
+      let message = document.getElementById("message");
+
+      // Clear any previous message
+      message.textContent = "";
+
+      try {
+        // Get the user's input value
+        let input = document.getElementById("numInput").value;
+
+        // If input is empty, throw an error
+        if (input === "") {
+          throw "Input is empty!";
+        }
+
+        // If input is not a number, throw another error
+        if (isNaN(input)) {
+          throw "That's not a number!";
+        }
+
+        // If everything is fine, display success message
+        message.textContent = "You entered a valid number!";
+        message.className = "success";
+
+      } catch (error) {
+        // This block handles any errors that occur in try{}
+        message.textContent = "Error: " + error;
+        message.className = "error";
+      } finally {
+        // This block always runs — whether there was an error or not
+        console.log("Validation completed.");
+      }
+    }
+  </script>
+</body>
+</html>

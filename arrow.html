@@ -1,49 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arrow Function Operations</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background:linear-gradient(to right, lightblue, lightgreen);
+      background: linear-gradient(to right, lightblue, lightgreen);
       padding: 20px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
-
+    .container {
+      background: linear-gradient(to left, lightblue, lightgreen);
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+      max-width: 400px;
+      width: 100%;
+    }
     h1 {
       color: beige;
       text-shadow: 2px 2px 4px black;
+      margin-bottom: 20px;
     }
-
     p {
-      font-size: 16px;
-      color: #333;
+      font-size: 18px;
+      color: black;
+      margin: 8px 0;
     }
-
-    #result {
+    .result {
       font-weight: bold;
-      font-size: 20px;
-      color: red;
-      margin-top: 10px;
-    }
-       .container {
-      background:linear-gradient(to left, lightblue, lightgreen);
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
-      margin: auto;
-        text-align: center;
+      color: darkred;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>JavaScript Arrow Function</h1>
-    <p><b>This example shows an Arrow Function with a parameter.</b></p>
-    <p id="result"></p>
+    <h1>Arrow Function Operations</h1>
+    <p>x = 4</p>
+    <p>y = 6</p>
+    <p class="result" id="add"></p>
+    <p class="result" id="subtract"></p>
+    <p class="result" id="multiply"></p>
+    <p class="result" id="divide"></p>
+    <p class="result" id="remainder"></p>
   </div>
   <script>
+    const x = 4;
+    const y = 6;
     const add = (a, b) => a + b;
-    document.getElementById("result").innerHTML = add(4, 6);
+    const subtract = (a, b) => a - b;
+    const multiply = (a, b) => a * b;
+    const divide = (a, b) => b !== 0 ? (a / b).toFixed(2) : 'Cannot divide by zero';
+    const remainder = (a, b) => b !== 0 ? a % b : 'Cannot divide by zero';
+    document.getElementById("add").textContent = `Addition (x + y): ${add(x, y)}`;
+    document.getElementById("subtract").textContent = `Subtraction (x - y): ${subtract(x, y)}`;
+    document.getElementById("multiply").textContent = `Multiplication (x * y): ${multiply(x, y)}`;
+    document.getElementById("divide").textContent = `Division (x / y): ${divide(x, y)}`;
+    document.getElementById("remainder").textContent = `Remainder (x % y): ${remainder(x, y)}`;
   </script>
 </body>
 </html>
