@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asynchronous Function Masterpiece</title>
+  <style>
+    /* ---------- BODY & BACKGROUND ---------- */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(-45deg, #74ebd5, #acb6e5, #fbc2eb, #a6c1ee);
+      background-size: 400% 400%;
+      animation: gradientMove 10s ease infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ---------- HEADING ---------- */
+    h1 {
+      font-size: 2.5em;
+      color: white;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------- BUTTON ---------- */
+    button {
+      position: relative;
+      overflow: hidden;
+      padding: 14px 35px;
+      font-size: 18px;
+      border: none;
+      border-radius: 50px;
+      color: white;
+      background: linear-gradient(90deg, #0093E9 0%, #80D0C7 100%);
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.3);
+      transform: skewX(-45deg);
+      transition: 0.5s;
+    }
+
+    button:hover::before {
+      left: 200%;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px rgba(255,255,255,0.6);
+    }
+
+    /* ---------- DATA BOX ---------- */
+    #data {
+      margin-top: 40px;
+      width: 80%;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 30px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    #data.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- TEXT STYLING ---------- */
+    .title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.4);
+    }
+
+    .content {
+      font-size: 18px;
+      color: #f0f0f0;
+      font-style: italic;
+      line-height: 1.6;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.4);
+    }
+
+    /* ---------- FLOATING BUBBLES EFFECT ---------- */
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: rise 10s infinite ease-in;
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0) scale(1); opacity: 0.9; }
+      100% { transform: translateY(-110vh) scale(1.3); opacity: 0; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Asynchronous Function Example</h1>
+  <button onclick="getData()">✨ Fetch Data ✨</button>
+  <div id="data">Press the button to load data...</div>
+
+  <!-- Floating bubbles -->
+  <div class="bubble" style="left:10%; width:25px; height:25px; animation-delay: 0s;"></div>
+  <div class="bubble" style="left:30%; width:15px; height:15px; animation-delay: 2s;"></div>
+  <div class="bubble" style="left:50%; width:20px; height:20px; animation-delay: 4s;"></div>
+  <div class="bubble" style="left:70%; width:35px; height:35px; animation-delay: 1s;"></div>
+  <div class="bubble" style="left:85%; width:18px; height:18px; animation-delay: 3s;"></div>
+
+  <script>
+    // Asynchronous function using async/await
+    async function getData() {
+      const display = document.getElementById('data');
+      display.classList.remove('show');
+      display.innerHTML = "<em>Fetching data, please wait...</em>";
+
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+        const result = await response.json();
+
+        // Display fetched data (no "English" label)
+        display.innerHTML = `
+          <div class="title">Title: ${result.title}</div>
+          <div class="content">${result.body}</div>
+        `;
+
+        // Smooth fade-in
+        setTimeout(() => display.classList.add('show'), 100);
+      } catch (error) {
+        display.innerHTML = "<strong>Error:</strong> Unable to fetch data.";
+        console.error(error);
+      }
+    }
+  </script>
+
+</body>
+</html>
