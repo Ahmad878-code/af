@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Form Validation</title>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  * {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+    height: 100vh;
+    background: linear-gradient(135deg, #00bcd4, #4caf50, #ff9800);
+    background-size: 400% 400%;
+    animation: bgmove 12s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  @keyframes bgmove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px 45px;
+    border-radius: 25px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+    width: 360px;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 90deg, transparent, rgba(255,255,255,0.3), transparent 30%);
+    animation: rotate 6s linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+
+  h2 {
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  .input-group {
+    margin-bottom: 18px;
+  }
+
+  label {
+    color: white;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 15px;
+    transition: 0.4s ease;
+  }
+
+  input:focus {
+    border-color: #00e6e6;
+    box-shadow: 0 0 10px #00e6e6;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .error {
+    color: #ff5252;
+    font-size: 13px;
+    margin-top: 4px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  button {
+    width: 100%;
+    background: linear-gradient(90deg, #00e6e6, #4caf50, #ff9800);
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    background-size: 200% 200%;
+    animation: gradientFlow 6s ease infinite;
+  }
+
+  @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,255,255,0.5);
+  }
+
+  .success {
+    color: #00ffb3;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+    display: none;
+    animation: pop 0.5s ease;
+  }
+
+  @keyframes pop {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="content">
+    <h2>✨ Secure Registration ✨</h2>
+    <form id="myForm">
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+        <div class="error" id="nameError">Please enter your name.</div>
+      </div>
+
+      <div class="input-group">
+        <label>Email</label>
+        <input type="text" id="email" placeholder="Enter your email">
+        <div class="error" id="emailError">Please enter a valid email address.</div>
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter password">
+        <div class="error" id="passwordError">Password must be at least 6 characters.</div>
+      </div>
+
+      <div class="input-group">
+        <label>Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm password">
+        <div class="error" id="confirmError">Passwords do not match.</div>
+      </div>
+
+      <button type="submit">Register</button>
+      <div class="success" id="successMsg">✅ Registration Successful!</div>
+    </form>
+  </div>
+</div>
+
+<script>
+const form = document.getElementById("myForm");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const confirmInput = document.getElementById("confirmPassword");
+const successMsg = document.getElementById("successMsg");
+
+const showError = (id, message) => {
+  const error = document.getElementById(id);
+  error.textContent = message;
+  error.style.display = "block";
+};
+
+const hideError = (id) => {
+  document.getElementById(id).style.display = "none";
+};
+
+const validateEmail = (email) => /^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email);
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let valid = true;
+  successMsg.style.display = "none";
+
+  if (nameInput.value.trim() === "") {
+    showError("nameError", "Please enter your name.");
+    valid = false;
+  } else hideError("nameError");
+
+  if (!validateEmail(emailInput.value)) {
+    showError("emailError", "Invalid email format.");
+    valid = false;
+  } else hideError("emailError");
+
+  if (passwordInput.value.length < 6) {
+    showError("passwordError", "Password must be at least 6 characters.");
+    valid = false;
+  } else hideError("passwordError");
+
+  if (confirmInput.value !== passwordInput.value || confirmInput.value === "") {
+    showError("confirmError", "Passwords do not match.");
+    valid = false;
+  } else hideError("confirmError");
+
+  if (valid) {
+    successMsg.style.display = "block";
+    form.reset();
+  }
+});
+
+// Real-time validation feedback
+[nameInput, emailInput, passwordInput, confirmInput].forEach((input) => {
+  input.addEventListener("input", () => {
+    successMsg.style.display = "none";
+  });
+});
+</script>
+
+</body>
+</html>
