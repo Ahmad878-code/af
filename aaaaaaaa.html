@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Simple Caraousel</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+        <style>
+            body {
+                background:linear-gradient(to right,skyblue,lightgreen)
+            }
+            h1 {
+    text-align: center;
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Adjust based on your image height */
+}
+ /*Hide all slides by default*/
+ .myslides{
+ display:none;
+ max-height:100%;/*Ensure images fit within the container*/
+ max-width:100%;
+ }
+        </style>
+    </head>
+    <body>
+        <h1>My favourite places</h1>
+        <div class="carousel-container">
+            <img class="myslides" src="https://www.w3schools.com/howto/img_nature_wide.jpg" height="300" width="900">
+            <img class="myslides" src="https://www.w3schools.com/howto/img_snow_wide.jpg" height="300" width="900">
+            <img class="myslides" src="https://www.w3schools.com/howto/img_mountains_wide.jpg"height="300" width="900" >
+        </div>
+
+        <script>
+            let slideIndex = 0;
+            carousel();
+
+            function carousel() {
+                let i;
+                let slides = document.getElementsByClassName("myslides");
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";  
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {slideIndex = 1}    
+                slides[slideIndex-1].style.display = "block";  
+                setTimeout(carousel, 2000); // Change image every 2 seconds
+            }
+        </script>
+    </body>
+</html>
