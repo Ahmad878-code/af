@@ -1,26 +1,48 @@
 <html>
+    <head>
+        <title>Website</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
     <body>
-        <style>
-            body {
-                background:linear-gradient(to right, lightblue 0%, green 100%);
-            }
-        </style>
-        <h2>Javascript array methods</h2>
-        <h2>join() and pop()</h2>
-<p>The join() method joins array elements into a string and 
-    the pop() method removes the last element from an array.</p>
+        <!-- Navigation Bar -->
+        <div class="topnav">
+            <a class="active" href="index.html">home</a>
+            <a href="about.html">about</a>
+            <a href="contactme.html">contact us</a>   
+            <a href="gallery.html">Gallery</a>
+            <!--slider-->
+            <section>
+                <img class="slider" src="spring.jpg" style="height:500px; width:1340px;">
+                <img class="slider" src="winter.jpg" style="height:500px; width:1340px;">
+                <img class="slider" src="summer.jpg" style="height:500px; width:1340px;">
 
-<p id="myjoin"></p>
-<p id="myfirstpop"></p>
-<p id="mysecondpop"></p>
-
-<script>
-    var fruits = ["Banana", "Orange", "Apple", "Mango"];
-    document.getElementById("myjoin").innerHTML = fruits.join(" * ");
-    document.getElementById("myfirstpop").innerHTML = fruits;
-    fruits.pop();
-    document.getElementById("mysecondpop").innerHTML = fruits;
-</script>
-
+            </section>
+            <br>
+            <span class="border trans" style="font-size:40px;">
+            <center>Welcome all to this website</center>
+            </span><br>
+            <section class="section section-dark">
+                <h2>Food</h2>
+                <p>Food is a substance consume to provide nutritional support for an organism.Food is usually of plant,animal or fungal origin, and contain essential
+                    nutrients such as carbohydrates, proteins,vitamins,minerals and fats.
+                </p>
+            </section>
+            <div class="pigm3">
+                <div class="ptext">
+                    <span class="border trans">
+                        Food is any substance consumed to provide nutritional support for an organism.
+                    </span>
+                    <br><br><br>
+                </div>
+            </div>
+            <p>Pizza</p>
+            <p><img src="pizza.jpg" style="width:170px; height:170px; margin-left:155px; float:right;">
+                Pizza is a dish of Italian origin consisting of a usually round, flat base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients (such as anchovies, mushrooms, onions, olives, vegetables, meat, etc.) which is then baked at a high temperature, traditionally in a wood-fired oven. A small pizza is sometimes called a pizzetta.
+            </p><br><br><br>
+            <!--footer-->
+            <section class="section section-dark">
+                All @copyright reserved by Codingal
+            </section>
+              <script src="script.js"></script>
     </body>
 </html>
